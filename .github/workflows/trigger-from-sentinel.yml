@@ -1,0 +1,12 @@
+# .github/workflows/trigger-from-sentinel.yml
+name: Sentinel Triggered Workflow
+on:
+  repository_dispatch:
+    types: [code_analysis]
+
+jobs:
+  code_analysis:
+    uses: wsnpros-org/sentinel/.github/workflows/analyze.yml@main
+    with:
+      repo_name: ${{ github.repository }}
+      # Add other parameters as needed
